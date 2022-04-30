@@ -3,6 +3,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const Employee = require('./model/employee')
 const Expense = require('./model/expenses')
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
@@ -10,7 +11,7 @@ app.use(cors());
 
 const dbConnect = async()=>{
     try{
-        await mongoose.connect('mongodb+srv://employee-data:employee-data1@employee-data.anwoa.mongodb.net/EmployeeData?retryWrites=true&w=majority&ssl=true')
+        await mongoose.connect(`${process.env.MONGO_URL}`)
         console.log("Database connected succesfully")
     }
     catch(error){
@@ -19,9 +20,6 @@ const dbConnect = async()=>{
 }
 dbConnect();
 
-// app.get('/',(req,res)=>{
-//     res.json('Server started')
-// });
 
 //Get Employee Date
 app.get('/',async (req,res)=>{
