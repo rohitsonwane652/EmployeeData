@@ -48,7 +48,7 @@ function Home() {
   }
 
   return (
-    <Container style={{ height: '55vh' }}>
+    <Container style={{ height: '400px' }}>
       <h1 className="text-center">Employee Data</h1>
       <UpdateEmployee
         currentRow={currentRow}
